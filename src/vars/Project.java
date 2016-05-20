@@ -2,30 +2,26 @@ package vars;
 
 import java.util.ArrayList;
 
+import algorithms.DFS.DFS;
+
 /**
  * Created by Guilherme on 11/04/2016.
  */
 public class Project {
     private String description;
-    private ArrayList<Task> tasks;
-    private ArrayList<Worker> workers;
+    private Task startingTask;
     
-    public Project(String description) {
+    public Project(String description, Task t) {
     	this.description = description;
-    	this.tasks = new ArrayList<Task>();
-    	this.workers = new ArrayList<Worker>();
+    	this.startingTask = t;
     }
     
-    public void addTask(Task t) {
-    	this.tasks.add(t);
+    public Task getStartingTask() {
+    	return this.startingTask;
     }
     
     public void addWorker(Worker w) {
     	this.workers.add(w);
-    }
-    
-    public ArrayList<Task> getTasks() {
-    	return this.tasks;
     }
     
     public String getDescription() {
@@ -34,13 +30,12 @@ public class Project {
     
     public String toString() {
     	String display = this.description + '\n';
-    	for(Task t : this.tasks)
+    	for(Task t : Task.allTasks)
     		display += t.toString();
+    	
+    	System.out.println("Estimated Conclusion Time: " + DFS.calculateLongestPath(this.startingTask) + " Months.\n");
     	
     	return display;
     }
 
-    public ArrayList<Worker> getWorkers() {
-    	return this.workers;
-    }
 }

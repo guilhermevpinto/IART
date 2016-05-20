@@ -6,47 +6,42 @@ import java.util.ArrayList;
  * Created by Guilherme on 11/04/2016.
  */
 public class Task {
-	protected static int idRef = 0;
+	public static int idRef = 0;
+	public static ArrayList<Task> allTasks = new ArrayList<Task>();
+	
+	private int id;
 	private String description;
-    private ArrayList<Worker> workers; //workers involved in this task
     private ArrayList<Task> precedences; //tasks to be concluded before this.Task starts
+    private ArrayList<Task> successors;
     private Scope scope;
-    private double duration; // COST : Workers per Month
-    private int id;
+    private float duration; // COST : Workers per Month
 
-    public Task(String description, double duration, Scope scope){
+    public Task(String description, float duration, Scope scope){
     	this.description = description;
-        this.workers = new ArrayList<Worker>();
-        this.precedences = new ArrayList<Task>();
+        this.precedences = new ArrayList<Task>(); 
+        this.successors = new ArrayList<Task>();
         this.duration = duration;
         this.scope = scope;
         this.id = Task.idRef++;
+        Task.allTasks.add(this);
     }
 
-    public ArrayList<Worker> getWorkers() {
-        return this.workers;
+    public int getId() {
+    	return this.id;
     }
-
-    public Worker getWorker(int i) {
-        try {
-            Worker w = this.workers.get(i);
-            return w;
-        } catch(IndexOutOfBoundsException e) {
-            return null;
-        }
-    }
-
-    public boolean addWorker(Worker w) {
-        if(this.workers.contains(w)) {
-            return false;
-        }
-        else this.workers.add(w);
-        return true;
-    }
-
+    
     public void addPrecedence(Task t) {
-    	if(!t.isPrecedence(this))
+    	if(!t.isPrecedence(this)){
     		this.precedences.add(t);
+    		t.addSuccessor(this);
+    	}
+    }
+    
+    private void addSuccessor(Task t) {
+    	this.successors.add(t);
+    }
+    public ArrayList<Task> getSuccessors() {
+    	return this.successors;
     }
     
     public ArrayList<Task> getPrecedences() {
@@ -65,12 +60,24 @@ public class Task {
         return this.scope;
     }
 
-    public int getId() {
-    	return this.id;
-    }
     
+    public float getEstimatedConclusionTime() {
+    	float result = this.duration;
+    	
+    	for (int i = 0; i < this.precedences.size(); i++) {
+    		float newEstimatedTime = this.precedences.get(i).getEstimatedConclusionTime() + this.duration;
+    		if(result < newEstimatedTime)
+    			result = newEstimatedTime;
+    	}
+    	
+    	return result;
+    }
     
     public String toString() {
     	return "Task #" + this.id + " | Description: " + this.description + "\n";
     }
+
+	public float getDuration() {
+		return this.duration;
+	}
 }

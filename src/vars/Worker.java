@@ -1,11 +1,13 @@
 package vars;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by Guilherme on 11/04/2016.
  */
 public class Worker {
+	public static ArrayList<Worker> allWorkers = new ArrayList<Worker> ();
     protected static int idRef = 0;
     private int id;
     private String name;
@@ -15,6 +17,7 @@ public class Worker {
         this.id = Worker.idRef++;
         this.name = name;
         this.skills = new HashMap<Integer, Skill>();
+        Worker.allWorkers.add(this);
     }
     
     public int getId(){
@@ -29,8 +32,8 @@ public class Worker {
     	this.skills.put(skill.getScope().getId(), skill);
     }
     
-    public Skill getSkillFromScope(Scope scope) {
-    	return this.skills.get(scope.getId());
+    public Skill getSkillFromScopeId(int scope) {
+    	return this.skills.get(scope);
     }
     
     public HashMap<Integer,Skill> getSkills() {

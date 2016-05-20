@@ -8,10 +8,12 @@ import java.util.ArrayList;
  */
 public class Chromosome {
 	private ArrayList<Integer> genes;
+	private float fitness;
 	
     public Chromosome(int chromosomeSize){
     	this.genes = new ArrayList<Integer> (chromosomeSize);
     	this.generateGenes(chromosomeSize);
+    	this.fitness = 0;
     }
 
 	private void generateGenes(int chromosomeSize) {
@@ -21,19 +23,19 @@ public class Chromosome {
 			else this.genes.add(i, 1);
 		
 	}
+	
+	public ArrayList<Integer> getGenes() {
+		return this.genes;
+	}
 
-	public float getFitness() {
-		float result;
-		
-		if(!Fitness.checkWorkersAssignment(this))
-			return -1;
-			
-		result = Fitness.checkTasksPerformance(this);
-		
-		return result;
+	public void calculateFitness() {
+		if(Fitness.validateWorkersAssignment(this))
+			this.fitness = -1;
+		else this.fitness = Fitness.evaluateFitness(this);
 	}
 
 	public String toString() {
-		return this.genes.toString();
+		calculateFitness();
+		return this.genes.toString() + " Fitness " + this.fitness;
 	}
 }
