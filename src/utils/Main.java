@@ -44,40 +44,29 @@ public class Main {
 			System.out.println("Project setup successfull!");
 		}
 		
-		new GeneticAlgorithm(10, 10);
+		//numChromossomes,numGenerations,numSelections,cutsPerCrossover,mutationP
+		new GeneticAlgorithm(99, 10000, 5, 2, 0.3);
+		
+		//new SimulatedAnnealing(0.999);
 	}
 
 	private static void setupWorkers() {
 		andre.addSkill(new Skill(s1, (float)0.9));
 		andre.addSkill(new Skill(s2, (float)0.6));
 		andre.addSkill(new Skill(s3, (float)0.7));
-		andre.addSkill(new Skill(s4, (float)0.4));
-		andre.addSkill(new Skill(s5, (float)0.5));
 		andre.addSkill(new Skill(s6, (float)0.7));
 		guilherme.addSkill(new Skill(s1, (float)0.8));
 		guilherme.addSkill(new Skill(s2, (float)0.9));
-		guilherme.addSkill(new Skill(s3, (float)0.7));
 		guilherme.addSkill(new Skill(s4, (float)0.9));
 		guilherme.addSkill(new Skill(s5, (float)0.9));
 		guilherme.addSkill(new Skill(s6, (float)0.8));
 		gustavo.addSkill(new Skill(s1, (float)0.9));
-		gustavo.addSkill(new Skill(s2, (float)0.7));
-		gustavo.addSkill(new Skill(s3, (float)0.9));
 		gustavo.addSkill(new Skill(s4, (float)0.6));
 		gustavo.addSkill(new Skill(s5, (float)0.7));
 		gustavo.addSkill(new Skill(s6, (float)0.9));
 		pedro.addSkill(new Skill(s1, (float)0.7));
 		pedro.addSkill(new Skill(s2, (float)1.0));
 		pedro.addSkill(new Skill(s3, (float)0.5));
-		pedro.addSkill(new Skill(s4, (float)0.4));
-		pedro.addSkill(new Skill(s5, (float)0.6));
-		pedro.addSkill(new Skill(s6, (float)0.9));
-		
-		
-		project.addWorker(andre);
-		project.addWorker(guilherme);
-		project.addWorker(gustavo);
-		project.addWorker(pedro);
 		
 	}
 
@@ -117,8 +106,8 @@ public class Main {
 	private static void validateProject() throws ProjectSetupException {
 		
 		HashMap<Integer, Scope> scopes = new HashMap<Integer, Scope>();
-		for (int i = 0; i < project.getWorkers().size(); i++) {
-			HashMap<Integer,Skill> skills = project.getWorkers().get(i).getSkills();
+		for (int i = 0; i < Worker.allWorkers.size(); i++) {
+			HashMap<Integer,Skill> skills = Worker.allWorkers.get(i).getSkills();
 			for (Entry<Integer, Skill> entries : skills.entrySet()) {
 				scopes.put(entries.getKey(), entries.getValue().getScope());
 			}

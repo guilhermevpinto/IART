@@ -1,7 +1,5 @@
 package vars;
 
-import java.util.ArrayList;
-
 import algorithms.DFS.DFS;
 
 /**
@@ -18,10 +16,6 @@ public class Project {
     
     public Task getStartingTask() {
     	return this.startingTask;
-    }
-    
-    public void addWorker(Worker w) {
-    	this.workers.add(w);
     }
     
     public String getDescription() {
