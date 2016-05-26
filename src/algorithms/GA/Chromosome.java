@@ -7,13 +7,20 @@ import java.util.ArrayList;
  * Created by Guilherme on 15/04/2016.
  */
 public class Chromosome implements Comparable<Chromosome>{
+	public static int refIf = 0;
+	private int id;
 	private ArrayList<Integer> genes;
 	private double fitness;
 	
     public Chromosome(){
+    	this.id = Chromosome.refIf++;
     	this.genes = new ArrayList<Integer> ();
     }
 
+    public int getId() {
+    	return this.id;
+    }
+    
 	public void generateGenes(int chromosomeSize) {
 		for(int i = 0; i < chromosomeSize; i++)
 			if(Math.random() < 0.5)

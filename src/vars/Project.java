@@ -27,7 +27,7 @@ public class Project {
     	for(Task t : Task.allTasks)
     		display += t.toString();
     	
-    	System.out.println("Estimated Conclusion Time: " + DFS.calculateLongestPath(this.startingTask) + " Months.\n");
+    	display += '\n' + "Estimated Conclusion Time: " + DFS.calculateLongestPath(this.startingTask) + " Months.\n";
     	
     	return display;
     }

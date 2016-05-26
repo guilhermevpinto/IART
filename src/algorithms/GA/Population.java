@@ -40,7 +40,7 @@ public class Population {
 		this.selection(numSelections);
 		
 		while(this.chromosomes.size() < numChromosomes) {
-			this.crossoverWithMutation(numChromosomes, cutsPerCrossover, mutationP);
+			this.crossoverWithMutation(numChromosomes, cutsPerCrossover, mutationP, numSelections);
 		}
 		
 		this.sortChromosomes();
@@ -51,30 +51,37 @@ public class Population {
 		//removes all chromosomes with fitness -1.
 		//only select a maximum of 'numSelections' fittest chromosomes.
 		for (int i = 0; i < this.chromosomes.size(); i++) {
-			if (i >= numSelections || this.chromosomes.get(i).getFitness() == -1){
+			if (numSelections != -1)
+			{
+				if (i >= numSelections || this.chromosomes.get(i).getFitness() == -1){
+					this.chromosomes.remove(i);
+					i--;
+				}
+			}
+			else if (this.chromosomes.get(i).getFitness() == -1){
 				this.chromosomes.remove(i);
 				i--;
 			}
+			
 		}
 	}
 	
-	private void crossoverWithMutation(int numChromosomes, int cutsPerCrossover, double mutationP) {
-		int minIndexCut = 1;
-		int maxIndexCut = numChromosomes - 2;
-		ArrayList<Integer> cuts = new ArrayList<Integer>();
-		Random r = new Random();
-		
-		//Generation of the cuts indexes to cross the fittest chromosomes of the population
-		for (int i = 0; i < cutsPerCrossover; i++) {
-			int cutIndex = r.nextInt((maxIndexCut - minIndexCut) + 1) + minIndexCut;
-			if(cuts.contains(cutIndex))
-				i--;
-			else cuts.add(i, cutIndex);
-		}
+	private void crossoverWithMutation(int numChromosomes, int cutsPerCrossover, double mutationP, int numSelections) {
+		ArrayList<Integer> cuts = generateCuts(cutsPerCrossover);
 		
 		Chromosome c = new Chromosome();
-		Chromosome c1 = this.chromosomes.get(0);
-		Chromosome c2 = this.chromosomes.get(1);
+		Chromosome c1 = null;
+		Chromosome c2 = null;
+		
+		if(numSelections != -1) {
+			c1 = this.chromosomes.get(0);
+			c2 = this.chromosomes.get(1);
+		}
+		else {
+			c1 = getChromosomeForCrossover();
+			c2 = getChromosomeForCrossover();
+		}
+		
 		int chromosomeSize = c1.getGenes().size();
 		int current = 1;
 		for (int i = 0; i < chromosomeSize; i++) {
@@ -101,6 +108,43 @@ public class Population {
 		
 		c.calculateFitness();
 		this.chromosomes.add(c);
+	}
+
+	private ArrayList<Integer> generateCuts(int cutsPerCrossover) {
+		int minIndexCut = 1;
+		int maxIndexCut = chromosomes.get(0).getGenes().size() - 1;
+		ArrayList<Integer> cuts = new ArrayList<Integer>();
+		Random r = new Random();
+		
+		//Generation of the cuts indexes to cross the fittest chromosomes of the population
+		int i = 0;
+		while(i < cutsPerCrossover) {
+			int cutIndex = r.nextInt((maxIndexCut - minIndexCut) + 1) + minIndexCut;
+			if(!cuts.contains(cutIndex)){
+				i++;
+				cuts.add(cutIndex);
+			}
+		}
+		
+		return cuts;
+	}
+	
+	private Chromosome getChromosomeForCrossover() {
+		ArrayList<Double> fitnesses = new ArrayList<Double>();
+		
+		double total = 0;
+		for(int i = 0; i < this.chromosomes.size(); i++) {
+			total += 1/this.chromosomes.get(i).getFitness();
+			fitnesses.add(total);
+		}
+
+		double r = Math.random()*total;
+		for(int i = 0; i < this.chromosomes.size(); i++) {
+			if(r < fitnesses.get(i)){
+				return this.chromosomes.get(i);
+			}
+		}
+		return null;
 	}
 	
 }

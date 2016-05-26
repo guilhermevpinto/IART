@@ -2,7 +2,6 @@ package utils;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import algorithms.GA.GeneticAlgorithm;
 import vars.Project;
 import vars.Scope;
 import vars.Skill;
@@ -13,23 +12,26 @@ import vars.Worker;
  * Created by Guilherme on 12/04/2016.
  */
 public class Main {
-	
-	//Defining all the possible required scopes
-	private static Scope s1 = new Scope("Arquitetura de Bases de Dados");
-	private static Scope s2 = new Scope("Documenta��o");
-	private static Scope s3 = new Scope("Divulga��o");
-	private static Scope s4 = new Scope("Programa��o HTML/CSS");
-	private static Scope s5 = new Scope("Programa��o PHP");
-	private static Scope s6 = new Scope("Programa��o PostgreSQL");
-	
-	private static Worker andre = new Worker("Andr� Lago");
-	private static Worker guilherme = new Worker("Guilherme Pinto");
-	private static Worker gustavo = new Worker("Gustavo Silva");
-	private static Worker pedro = new Worker("Pedro Castro");
-	
+
 	public static Project project;
 	
-	public static void main(String[] args) {
+	//Defining all the workers assigned to the project
+	private Worker andre = new Worker("Andr� Lago");
+	private Worker guilherme = new Worker("Guilherme Pinto");
+	private Worker gustavo = new Worker("Gustavo Silva");
+	private Worker pedro = new Worker("Pedro Castro");
+	
+	//Defining all the possible required scopes
+	private Scope s1 = new Scope("Arquitetura de Bases de Dados");
+	private Scope s2 = new Scope("Documenta��o");
+	private Scope s3 = new Scope("Divulga��o");
+	private Scope s4 = new Scope("Programa��o HTML/CSS");
+	private Scope s5 = new Scope("Programa��o PHP");
+	private Scope s6 = new Scope("Programa��o PostgreSQL");
+	
+	
+	
+	public Main() {
 		setupProject();
 		setupWorkers();
 		
@@ -40,37 +42,15 @@ public class Main {
 			System.out.println(e);
 			System.exit(1);
 		}
-		finally {
-			System.out.println("Project setup successfull!");
-		}
 		
 		//numChromossomes,numGenerations,numSelections,cutsPerCrossover,mutationP
-		new GeneticAlgorithm(99, 10000, 5, 2, 0.3);
-		
-		//new SimulatedAnnealing(0.999);
-	}
-
-	private static void setupWorkers() {
-		andre.addSkill(new Skill(s1, (float)0.9));
-		andre.addSkill(new Skill(s2, (float)0.6));
-		andre.addSkill(new Skill(s3, (float)0.7));
-		andre.addSkill(new Skill(s6, (float)0.7));
-		guilherme.addSkill(new Skill(s1, (float)0.8));
-		guilherme.addSkill(new Skill(s2, (float)0.9));
-		guilherme.addSkill(new Skill(s4, (float)0.9));
-		guilherme.addSkill(new Skill(s5, (float)0.9));
-		guilherme.addSkill(new Skill(s6, (float)0.8));
-		gustavo.addSkill(new Skill(s1, (float)0.9));
-		gustavo.addSkill(new Skill(s4, (float)0.6));
-		gustavo.addSkill(new Skill(s5, (float)0.7));
-		gustavo.addSkill(new Skill(s6, (float)0.9));
-		pedro.addSkill(new Skill(s1, (float)0.7));
-		pedro.addSkill(new Skill(s2, (float)1.0));
-		pedro.addSkill(new Skill(s3, (float)0.5));
+		//new GeneticAlgorithm(99, 10000, 5, 2, 0.3);
 		
 	}
 
-	private static void setupProject() {
+	
+
+	public void setupProject() {
 		
 		//Defining Tasks and respective precedences
 		//User Requirements Specification
@@ -103,8 +83,44 @@ public class Main {
 		project = new Project("LBAW - EduPoll", a1);
 	}
 
-	private static void validateProject() throws ProjectSetupException {
+	
+	public void setupWorkers() {
+		andre.addSkill(new Skill(s1, (float)0.9));
+		andre.addSkill(new Skill(s2, (float)0.6));
+		andre.addSkill(new Skill(s3, (float)0.7));
+		//andre.addSkill(new Skill(s4, (float)0.7));
+		//andre.addSkill(new Skill(s5, (float)0.7));
+		andre.addSkill(new Skill(s6, (float)0.7));
 		
+		guilherme.addSkill(new Skill(s1, (float)0.8));
+		guilherme.addSkill(new Skill(s2, (float)0.9));
+		//guilherme.addSkill(new Skill(s3, (float)0.9));
+		guilherme.addSkill(new Skill(s4, (float)0.9));
+		guilherme.addSkill(new Skill(s5, (float)0.9));
+		guilherme.addSkill(new Skill(s6, (float)0.8));
+		
+		gustavo.addSkill(new Skill(s1, (float)0.9));
+		//gustavo.addSkill(new Skill(s2, (float)0.9));
+		//gustavo.addSkill(new Skill(s3, (float)0.9));
+		gustavo.addSkill(new Skill(s4, (float)0.6));
+		gustavo.addSkill(new Skill(s5, (float)0.7));
+		gustavo.addSkill(new Skill(s6, (float)0.9));
+		
+		pedro.addSkill(new Skill(s1, (float)0.7));
+		pedro.addSkill(new Skill(s2, (float)1.0));
+		pedro.addSkill(new Skill(s3, (float)0.5));
+		//pedro.addSkill(new Skill(s4, (float)0.5));
+		//pedro.addSkill(new Skill(s5, (float)0.5));
+		//pedro.addSkill(new Skill(s6, (float)0.5));
+		
+	}
+	
+	
+	/**
+	 * Validates if there are any skills missing from the workers, to conclude the project (conclude every single task)
+	 * @throws ProjectSetupException
+	 */
+	private void validateProject() throws ProjectSetupException {
 		HashMap<Integer, Scope> scopes = new HashMap<Integer, Scope>();
 		for (int i = 0; i < Worker.allWorkers.size(); i++) {
 			HashMap<Integer,Skill> skills = Worker.allWorkers.get(i).getSkills();
@@ -117,7 +133,5 @@ public class Main {
 			if(scopes.get(task.getScope().getId()) == null)
 				throw new ProjectSetupException(task.getScope());
 		}
-		
-		
 	}
 }

@@ -1,6 +1,5 @@
 package algorithms.GA;
 
-import utils.Main;
 import vars.Task;
 import vars.Worker;
 
@@ -21,18 +20,13 @@ public class GeneticAlgorithm {
     	this.numGenerations = numGenerations;
     	this.numSelections = numSelections;
     	this.cutsPerCrossover = cutsPerCrossover;
-    	this.mutationP = mutationP;
-    	
-    	System.out.println(Main.project);
-    	
+    	this.mutationP = mutationP;    	
     	this.run();
     }
 
 	private void run() {
 		int i = 0;
 		while(i++ < this.numGenerations) {
-			//System.out.println("\n\nGeneration Number " + i);
-			//System.out.println(population);
 			this.population.evolve(this.numChromosomes, this.numSelections, this.cutsPerCrossover, this.mutationP);
 		}
 		

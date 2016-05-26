@@ -62,7 +62,7 @@ public class SimulatedAnnealing {
 				if (Math.random() < v) {
 					this.currentState = nextState;
 					this.data = nextData;
-					System.out.println("Ai o crl regrediu: " + this.currentState);
+					System.out.println("regrediu: " + this.currentState);
 				}
 			}
 			
