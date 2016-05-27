@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.Desktop;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -33,9 +32,9 @@ public class MainSwit implements ActionListener {
 		this.mainFrame.setSize(900,600);
 
 		this.setPanelContent();
-		this.mainFrame.setLocationRelativeTo(null);
 		this.mainFrame.setVisible(true);
 		this.mainFrame.pack();
+		this.mainFrame.setLocationRelativeTo(null);
 	}
 	
 	private void setPanelContent() {
@@ -53,20 +52,21 @@ public class MainSwit implements ActionListener {
 		this.mainFrame.setContentPane(new JLabel(imageIcon));
 
 		JLabel panel = (JLabel) this.mainFrame.getContentPane();
-		Insets insets = panel.getInsets();
 		
 		panel.add(newProject);
 		panel.add(about);
 		
-		this.newProject.setBounds(insets.left + 100, insets.top + 500, 300, 50);
-		this.about.setBounds(insets.left + 500, insets.top + 500, 300, 50);
+		this.newProject.setBounds(100, 500, 300, 50);
+		this.about.setBounds(500, 500, 300, 50);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(this.newProject == e.getSource()) {
-			this.mainFrame.removeAll();
+			this.mainFrame.remove(this.mainFrame.getContentPane());
+			this.mainFrame.revalidate();
+			this.mainFrame.repaint();
 			new SwitProject(this.mainFrame);
 		}
 		else if(this.about == e.getSource()){

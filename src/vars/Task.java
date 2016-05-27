@@ -19,6 +19,7 @@ public class Task {
     public Task(String description, float duration, Scope scope){
     	this.description = description;
         this.successors = new ArrayList<Task>();
+        this.precedences = new ArrayList<Task>();
         this.duration = duration;
         this.scope = scope;
         this.id = Task.idRef++;
@@ -30,12 +31,17 @@ public class Task {
     }
     
     public void addPrecedence(Task t) {
-    	t.addSuccessor(this);
+    	if (t.addSuccessor(this))
+    		this.precedences.add(t);
     }
     
-    private void addSuccessor(Task t) {
-    	if(!t.isSuccessor(t))
+    private boolean addSuccessor(Task t) {
+    	if(!t.isSuccessor(t)){
     		this.successors.add(t);
+    		return true;
+    	}
+    	
+    	return false;
     }
     	
     public ArrayList<Task> getSuccessors() {

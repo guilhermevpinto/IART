@@ -14,6 +14,7 @@ import vars.Worker;
 public class Main {
 
 	public static Project project;
+	public static boolean set = false;
 	
 	//Defining all the workers assigned to the project
 	private Worker andre = new Worker("Andr� Lago");
@@ -42,6 +43,8 @@ public class Main {
 			System.out.println(e);
 			System.exit(1);
 		}
+		
+		Main.set = true;
 		
 		//numChromossomes,numGenerations,numSelections,cutsPerCrossover,mutationP
 		//new GeneticAlgorithm(99, 10000, 5, 2, 0.3);

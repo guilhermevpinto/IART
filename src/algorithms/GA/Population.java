@@ -75,7 +75,9 @@ public class Population {
 		
 		if(numSelections != -1) {
 			c1 = this.chromosomes.get(0);
-			c2 = this.chromosomes.get(1);
+			if(this.chromosomes.size() > 1)
+				c2 = this.chromosomes.get(1);
+			else c2 = c1;
 		}
 		else {
 			c1 = getChromosomeForCrossover();

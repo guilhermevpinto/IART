@@ -14,15 +14,12 @@ public class SimulatedAnnealing {
 	private double ratio;
 	private double currentState;
 	
-	public SimulatedAnnealing(double ratio) {
+	public SimulatedAnnealing(double ratio, double T) {
 		initializeData();
-		this.T = Math.pow(DFS.calculateLongestPath(Main.project.getStartingTask()),2);
+		this.T = T;
 		this.currentState = StateValue.evaluateState(this.data);
 		this.ratio = ratio;
-		run();
 		
-		System.out.println((1/Math.sqrt(this.currentState))*DFS.calculateLongestPath(Main.project.getStartingTask()));
-		System.out.println(this.data);
 	}
 	
 	private void initializeData() {
@@ -36,7 +33,7 @@ public class SimulatedAnnealing {
 	}
 	
 	
-	private void run() {
+	public void run() {
 		ArrayList<Integer> nextData;
 		while (this.T > Double.MIN_NORMAL){			
 			nextData = this.copyOf(this.data);
@@ -50,21 +47,21 @@ public class SimulatedAnnealing {
 			
 			double nextState = StateValue.evaluateState(nextData);
 			double diff = nextState - this.currentState;
-			System.out.println("Diferenca: " + diff);
 			if (diff > 0) {
 				this.currentState = nextState;
 				this.data = nextData;
-				System.out.println(this.currentState);
 			}
 			else {
 				double v = Math.exp(diff/this.T);
-				System.out.println("o valor do double v : " + v);
 				if (Math.random() < v) {
 					this.currentState = nextState;
 					this.data = nextData;
-					System.out.println("regrediu: " + this.currentState);
 				}
 			}
+			
+			System.out.println("Current Data: " + this.data);
+			System.out.println("Value: " + (1/Math.sqrt(this.currentState))*DFS.calculateLongestPath(Main.project.getStartingTask()));
+			System.out.println();
 			
 			this.T *= this.ratio;
 		}
@@ -77,5 +74,14 @@ public class SimulatedAnnealing {
 			result.add(c.get(i));
 		
 		return result;
+	}
+	
+	
+	public ArrayList<Integer> getFinalData() {
+		return this.data;
+	}
+	
+	public Double getFinalValue() {
+		return (1/Math.sqrt(this.currentState))*DFS.calculateLongestPath(Main.project.getStartingTask());
 	}
 }
