@@ -36,7 +36,14 @@
 \newpage
 
 \section*{Objetivo}
+
 Este trabalho é desenvolvido no âmbito da unidade curricular de Inteligência Artificial (IART), e tem como principal objectivo o estudo e investigação de algoritmos de otimização de soluções. \\ No projeto em questão, será abordada a otimização da gestão de projetos, isto é, a distribuição de trabalhadores pelas tarefas de um determinado projeto. Sendo que esta atribuição ocupa um vasto campo de soluções para projetos complexos com um considerável número de trabalhadores, recorremos a metodologias de otimização de soluções como algoritmos genéticos e arrefecimento simulado para alcançar o objectivo pretendido.
+
+ \par Tendo em conta a complexidade da organização de recursos orientados à gestão de projetos coordenados, temos como objetivo, o output de um valor ótimo para o problema.  
+ 
+ \par Definiremos então um Projeto como sendo constituído por uym conjunto de Tarefas a serem concluídas por um ou mais Trabalhadores. As Tarefas podem ter precedências entre si e apresentam uma duração Trabalhador/mês. Cada tarefa não pode ser iniciada sem a totalidade das suas precedências estar completa.
+ 
+
 
 \newpage
 
@@ -51,19 +58,27 @@ Este trabalho é desenvolvido no âmbito da unidade curricular de Inteligência 
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introdução}
+\section{Especificação}
+Considerou-se que cada Tarefa tem uma lista de Tarefas precedentes e sucessoras, uma duração total, descrição e âmbito. Cada Trabalhador tem um HashMap de Skills
 
-Descrever os objetivos e motivação do trabalho. Descrever num parágrafo breve a estrutura do relatório.
+
+\subsection{Análise do Problema}
+
+
+\subsection{Abordagem}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Desenvolvimento}
+ Para a implementação deste projeto, recorreremos à linguagem Java que, para além de nos facultar a documentação e estruturas de dados mais importantes para a conceção do código, também suporta, de forma consistente e relativamente simples, a criação de uma interface gráfica importante para a interação entre o utilizador e a API.
+ 
+ \par A nível de Ferramentas/APIs utilizadas neste projeto, são de referir o Eclipse (usado na elaboração do código), Github (usado um repositório para partilha de código) e TexStudio (usado na elaboração do relatório).
+ \par A seguir demonstra-se o diagrama de classes do referido projeto.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{O Jogo XXX}
-
-Descrever sucintamente o jogo, a sua história e, principalmente, as suas regras. Devem ser incluídas imagens apropriadas para explicar o funcionamento do jogo. (Pode ser idêntico ao texto do relatório intercalar.)
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lógica do Jogo}
+\section{Experiências}
 
 Descrever o projeto e implementação da lógica do jogo em Prolog, incluindo a forma de representação do estado do tabuleiro e sua visualização, execução de movimentos, verificação do cumprimento das regras do jogo, determinação do final do jogo e cálculo das jogadas a realizar pelo computador utilizando diversos níveis de jogo. Sugere-se a estruturação desta secção da seguinte forma:
 
@@ -92,6 +107,9 @@ Descrever o módulo de interface com o utilizador em modo de texto.
 \section{Conclusões}
 Que conclui deste projecto? Como poderia melhorar o trabalho desenvolvido?
 
+
+\section{Melhoramentos}
+Que conclui deste projecto? Como poderia melhorar o trabalho desenvolvido?
 
 \clearpage
 \addcontentsline{toc}{section}{Bibliografia}
