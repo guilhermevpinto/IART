@@ -32,6 +32,18 @@ public class GeneticAlgorithm {
 		
 		System.out.println("\n\nFinal Generation Number");
     	System.out.println(population);
+    	printFinalResult();
+	}
+
+	private void printFinalResult() {
+		System.out.println("Final Result Description");
+		
+		for(int i = 0; i < Task.allTasks.size(); i++) {
+			System.out.println(Task.allTasks.get(i));
+			System.out.println("Task Original Duration: " + Task.allTasks.get(i).getDuration());
+			
+		}
+		
 	}
     
     
