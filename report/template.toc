@@ -1,15 +1,18 @@
 \select@language {portuguese}
-\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{4}
-\contentsline {section}{\numberline {2}O Jogo XXX}{4}
-\contentsline {section}{\numberline {3}L\IeC {\'o}gica do Jogo}{4}
-\contentsline {subsection}{\numberline {3.1}Representa\IeC {\c c}\IeC {\~a}o do Estado do Jogo}{4}
-\contentsline {subsection}{\numberline {3.2}Visualiza\IeC {\c c}\IeC {\~a}o do Tabuleiro}{4}
-\contentsline {subsection}{\numberline {3.3}Lista de Jogadas V\IeC {\'a}lidas}{4}
-\contentsline {subsection}{\numberline {3.4}Execu\IeC {\c c}\IeC {\~a}o de Jogadas}{4}
-\contentsline {subsection}{\numberline {3.5}Avalia\IeC {\c c}\IeC {\~a}o do Tabuleiro}{4}
-\contentsline {subsection}{\numberline {3.6}Final do Jogo}{4}
-\contentsline {subsection}{\numberline {3.7}Jogada do Computador}{4}
-\contentsline {section}{\numberline {4}Interface com o Utilizador}{5}
-\contentsline {section}{\numberline {5}Conclus\IeC {\~o}es}{5}
-\contentsline {section}{Bibliografia}{6}
-\contentsline {section}{\numberline {A}Nome do Anexo}{6}
+\contentsline {section}{\numberline {1}Especifica\IeC {\c c}\IeC {\~a}o}{4}
+\contentsline {subsection}{\numberline {1.1}An\IeC {\'a}lise do Problema}{4}
+\contentsline {subsection}{\numberline {1.2}Abordagem}{4}
+\contentsline {section}{\numberline {2}Desenvolvimento}{5}
+\contentsline {section}{\numberline {3}Experi\IeC {\^e}ncias}{5}
+\contentsline {subsection}{\numberline {3.1}Representa\IeC {\c c}\IeC {\~a}o do Estado do Jogo}{5}
+\contentsline {subsection}{\numberline {3.2}Visualiza\IeC {\c c}\IeC {\~a}o do Tabuleiro}{5}
+\contentsline {subsection}{\numberline {3.3}Lista de Jogadas V\IeC {\'a}lidas}{5}
+\contentsline {subsection}{\numberline {3.4}Execu\IeC {\c c}\IeC {\~a}o de Jogadas}{5}
+\contentsline {subsection}{\numberline {3.5}Avalia\IeC {\c c}\IeC {\~a}o do Tabuleiro}{5}
+\contentsline {subsection}{\numberline {3.6}Final do Jogo}{5}
+\contentsline {subsection}{\numberline {3.7}Jogada do Computador}{5}
+\contentsline {section}{\numberline {4}Interface com o Utilizador}{6}
+\contentsline {section}{\numberline {5}Conclus\IeC {\~o}es}{6}
+\contentsline {section}{\numberline {6}Melhoramentos}{6}
+\contentsline {section}{Bibliografia}{7}
+\contentsline {section}{\numberline {A}Nome do Anexo}{7}
