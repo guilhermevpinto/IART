@@ -42,7 +42,7 @@ public class StateValue {
 				counter++;
 		}
 
-		return counter;
+		return counter*10;
 	}
 
 	public static double evaluateState(ArrayList<Integer> c) {
@@ -77,7 +77,7 @@ public class StateValue {
 		Task t = Task.allTasks.get(i);
 		double totalPerformance = 0;
 		
-		double start = getStartingTime(t);
+		double start = getStartingTime(c, i, t);
 		
 		for (int j = 0; j < Worker.allWorkers.size(); j++) {
 			if(c.get(i*Worker.allWorkers.size() + j) == 0) continue;
@@ -102,11 +102,16 @@ public class StateValue {
 		}
 	}
 
-	private static double getStartingTime(Task t) {
+	private static double getStartingTime(ArrayList<Integer> c, int id, Task t) {
 		double result = 0;
 		for (int i = 0; i < t.getPrecedences().size(); i++) {
 			if(result < tasksFinal.get(t.getPrecedences().get(i).getId()))
 				result = tasksFinal.get(t.getPrecedences().get(i).getId());
+		}
+		for (int i = 0; i < Worker.allWorkers.size(); i++) {
+			if(c.get(id*Worker.allWorkers.size() + i) == 1)
+				if (workersFinal.get(i) > result)
+					result = workersFinal.get(i);
 		}
 		return result;
 	}

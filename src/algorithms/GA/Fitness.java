@@ -42,7 +42,7 @@ public class Fitness {
 
 	/**
 	 * @param c Chromosome to be processed
-	 * @return Float with the value of the fitness calculated
+	 * @return Double with the value of the fitness calculated
 	 */
 	public static double evaluateFitness(Chromosome c) {
 		initializeWorkersStatus();
@@ -67,11 +67,16 @@ public class Fitness {
 			workersFinal.add(i, 0.0);
 	}
 
+	/**
+	 * @param c Chromosome to be processed
+	 * @param i Task id
+	 * 
+	 */
 	private static void processTask(Chromosome c, int i) {
 		Task t = Task.allTasks.get(i);
 		double totalPerformance = 0;
 		
-		double start = getStartingTime(t);
+		double start = getStartingTime(c, i, t);
 		
 		for (int j = 0; j < Worker.allWorkers.size(); j++) {
 			if(c.getGenes().get(i*Worker.allWorkers.size() + j) == 0) continue;
@@ -96,11 +101,16 @@ public class Fitness {
 		}
 	}
 
-	private static double getStartingTime(Task t) {
+	private static double getStartingTime(Chromosome c, int id, Task t) {
 		double result = 0;
 		for (int i = 0; i < t.getPrecedences().size(); i++) {
 			if(result < tasksFinal.get(t.getPrecedences().get(i).getId()))
 				result = tasksFinal.get(t.getPrecedences().get(i).getId());
+		}
+		for (int i = 0; i < Worker.allWorkers.size(); i++) {
+			if(c.getGenes().get(id*Worker.allWorkers.size() + i) == 1)
+				if (workersFinal.get(i) > result)
+					result = workersFinal.get(i);
 		}
 		return result;
 	}

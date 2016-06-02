@@ -1,18 +1,60 @@
 \select@language {portuguese}
 \contentsline {section}{\numberline {1}Especifica\IeC {\c c}\IeC {\~a}o}{4}
-\contentsline {subsection}{\numberline {1.1}An\IeC {\'a}lise do Problema}{4}
-\contentsline {subsection}{\numberline {1.2}Abordagem}{4}
-\contentsline {section}{\numberline {2}Desenvolvimento}{5}
-\contentsline {section}{\numberline {3}Experi\IeC {\^e}ncias}{5}
-\contentsline {subsection}{\numberline {3.1}Representa\IeC {\c c}\IeC {\~a}o do Estado do Jogo}{5}
-\contentsline {subsection}{\numberline {3.2}Visualiza\IeC {\c c}\IeC {\~a}o do Tabuleiro}{5}
-\contentsline {subsection}{\numberline {3.3}Lista de Jogadas V\IeC {\'a}lidas}{5}
-\contentsline {subsection}{\numberline {3.4}Execu\IeC {\c c}\IeC {\~a}o de Jogadas}{5}
-\contentsline {subsection}{\numberline {3.5}Avalia\IeC {\c c}\IeC {\~a}o do Tabuleiro}{5}
-\contentsline {subsection}{\numberline {3.6}Final do Jogo}{5}
-\contentsline {subsection}{\numberline {3.7}Jogada do Computador}{5}
-\contentsline {section}{\numberline {4}Interface com o Utilizador}{6}
-\contentsline {section}{\numberline {5}Conclus\IeC {\~o}es}{6}
-\contentsline {section}{\numberline {6}Melhoramentos}{6}
-\contentsline {section}{Bibliografia}{7}
-\contentsline {section}{\numberline {A}Nome do Anexo}{7}
+\contentsline {paragraph}{}{4}
+\contentsline {subsection}{\numberline {1.1}Algoritmos Gen\IeC {\'e}ticos}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{Cromossomas}{5}
+\contentsline {paragraph}{Vari\IeC {\'a}veis}{5}
+\contentsline {paragraph}{Popula\IeC {\c c}\IeC {\~a}o}{5}
+\contentsline {paragraph}{Sele\IeC {\c c}\IeC {\~a}o}{6}
+\contentsline {paragraph}{Crossover}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{Muta\IeC {\c c}\IeC {\~a}o}{6}
+\contentsline {paragraph}{\textit {Fitness}}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {subsection}{\numberline {1.2}Arrefecimento Simulado}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {paragraph}{}{8}
+\contentsline {section}{\numberline {2}Desenvolvimento}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {paragraph}{}{9}
+\contentsline {section}{\numberline {3}Experi\IeC {\^e}ncias}{12}
+\contentsline {subsection}{\numberline {3.1}Algoritmos Gen\IeC {\'e}ticos}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsubsection}{\numberline {3.1.1}Redu\IeC {\c c}\IeC {\~a}o do numero de Cromossomas}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {subsubsection}{\numberline {3.1.2}Redu\IeC {\c c}\IeC {\~a}o do numero de Gera\IeC {\c c}\IeC {\~o}es}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {subsubsection}{\numberline {3.1.3}Aumento da probabilidade de Muta\IeC {\c c}\IeC {\~a}o}{13}
+\contentsline {paragraph}{}{13}
+\contentsline {subsubsection}{\numberline {3.1.4}Aumento dos cortes por Crossover}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {subsubsection}{\numberline {3.1.5}Diminui\IeC {\c c}\IeC {\~a}o das sele\IeC {\c c}\IeC {\~o}es por gera\IeC {\c c}\IeC {\~a}o}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {subsection}{\numberline {3.2}Arrefecimento Simulado}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {subsubsection}{\numberline {3.2.1}Aumento da Temperatura}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {subsubsection}{\numberline {3.2.2}Diminui\IeC {\c c}\IeC {\~a}o do R\IeC {\'a}cio de arrefecimento}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {section}{\numberline {4}Conclus\IeC {\~o}es}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {section}{\numberline {5}Melhoramentos}{16}
